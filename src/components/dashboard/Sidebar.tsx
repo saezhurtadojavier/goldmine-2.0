@@ -19,15 +19,19 @@ const SidebarItem = ({ icon, label, path, active, collapsed }: SidebarItemProps)
       <Button
         variant="ghost"
         className={cn(
-          "w-full justify-start gap-3 px-3",
+          "w-full justify-start gap-3 px-3 transition-colors duration-150",
           collapsed ? "justify-center" : "",
-          active ? "bg-techstock-purple/10 text-techstock-purple-light" : "text-gray-400 hover:text-white"
+          active ? "bg-techstock-purple/10 text-techstock-purple-light" : "text-white hover:bg-techstock-purple hover:text-techstock-gold" // Always visible text, invert on hover
         )}
+        style={{
+          color: active ? '#B794F4' : undefined, // techstock-purple-light
+          background: active ? 'rgba(183, 148, 244, 0.1)' : undefined
+        }}
       >
         <div className="flex h-5 w-5 items-center justify-center">
           {icon}
         </div>
-        {!collapsed && <span>{label}</span>}
+        {!collapsed && <span className="font-bold" data-component-name="SidebarItem">{label}</span>}
       </Button>
     </Link>
   );
@@ -45,7 +49,8 @@ const Sidebar = ({ collapsed, setCollapsed }: SidebarProps) => {
     {
       icon: (
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          {/* Lucide LayoutDashboard icon */}
+          <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" />
         </svg>
       ),
       label: "Dashboard",
@@ -57,8 +62,18 @@ const Sidebar = ({ collapsed, setCollapsed }: SidebarProps) => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
         </svg>
       ),
-      label: "Curso",
+      label: "Course Overview",
       path: "/dashboard/course",
+    },
+    {
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h8M12 8v8" />
+        </svg>
+      ),
+      label: "My Portfolio",
+      path: "/dashboard/portfolio",
     },
     {
       icon: (
@@ -66,35 +81,27 @@ const Sidebar = ({ collapsed, setCollapsed }: SidebarProps) => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
         </svg>
       ),
-      label: "Test de Conocimientos",
+      label: "Knowledge Test",
       path: "/dashboard/test",
     },
     {
       icon: (
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+          <path d="M12 20h9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M16.5 3a4.5 4.5 0 0 1 4.5 4.5v7a4.5 4.5 0 0 1-4.5 4.5A4.5 4.5 0 0 1 12 14.5v-7A4.5 4.5 0 0 1 16.5 3Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       ),
-      label: "Habla con Antonio IA",
-      path: "/dashboard/ai",
+      label: "AI Assistant",
+      path: "/dashboard/ai-assistant",
     },
     {
       icon: (
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+          <path d="M2 12h20M12 2v20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       ),
-      label: "Analizador de Acciones",
-      path: "/dashboard/analyzer",
-    },
-    {
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
-        </svg>
-      ),
-      label: "Tu Cartera",
-      path: "/dashboard/portfolio",
+      label: "Stock Analyzer",
+      path: "/dashboard/stock-analyzer",
     },
   ];
 
@@ -107,7 +114,7 @@ const Sidebar = ({ collapsed, setCollapsed }: SidebarProps) => {
     >
       {/* Header del sidebar */}
       <div className={cn(
-        "h-16 flex items-center px-4 border-b border-techstock-gray/30",
+        "h-16 flex items-center px-4 border-b border-techstock-gray/30 mb-8",
         collapsed ? "justify-center" : "justify-between"
       )}>
         {!collapsed && (
