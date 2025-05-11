@@ -1,0 +1,38 @@
+# Configuración para el despliegue en Render
+# Documentación: https://render.com/docs/deploy-vite
+
+services:
+  - type: web
+    name: goldmine-portal
+    env: node
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: NODE_VERSION
+        value: 20.x
+      - key: NPM_CONFIG_PRODUCTION
+        value: "false"
+      - key: NODE_ENV
+        value: production
+    # Configuración de red
+    plan: free
+    region: oregon
+    autoDeploy: true
+    # Configuración de construcción
+    dockerContext: .
+    dockerfile: Dockerfile
+    # Rutas de salud
+    healthCheckPath: /index.html
+    # Recursos
+    resources:
+      memory: 512MB
+      cpu: 0.5
+
+# Configuración de entorno compartida
+envVars:
+  - key: PORT
+    value: 10000
+  - key: NODE_ENV
+    value: production
+  - key: ANALYZE
+    value: "false"  # Cambiar a "true" para generar el análisis del bundle

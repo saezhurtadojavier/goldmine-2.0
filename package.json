@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint . --ext ts,tsx --fix",
-    "analyze": "vite-bundle-visualizer",
+    "analyze": "vite-bundle-analyzer --mode preview",
     "format": "prettier --write \"src/**/*.{ts,tsx,css,scss,json}\""
   },
   "dependencies": {
@@ -70,6 +70,7 @@
     "@types/node": "^20.11.16",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
+    "@types/react-router-dom": "^5.3.3",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",
     "@vitejs/plugin-react-swc": "^3.5.0",
@@ -77,15 +78,13 @@
     "eslint": "^8.55.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
-    "lovable-tagger": "^0.0.4",
+    "lovable-tagger": "^1.0.0",
     "postcss": "^8.4.32",
     "prettier": "^3.2.4",
     "prettier-plugin-tailwindcss": "^0.5.10",
     "rollup-plugin-visualizer": "^5.10.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.2.2",
-    "vite": "^5.0.8",
-    "vite-plugin-bundle-visualizer": "^0.4.1",
-    "@types/react-router-dom": "^5.3.3"
+    "vite": "^5.0.8"
   }
 }

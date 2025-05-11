@@ -6,14 +6,15 @@ import path from 'path';
 export default defineConfig({
   plugins: [
     react({
-      // Opciones adicionales para producción
       jsxImportSource: 'react'
     }),
-    visualizer({
+    // Análisis del bundle solo en CI o cuando se solicite explícitamente
+    process.env.ANALYZE === 'true' && visualizer({
       gzipSize: true,
       brotliSize: true,
       emitFile: false,
       filename: 'bundle-analysis.html',
+      open: false,
     }),
   ],
   resolve: {
@@ -26,6 +27,9 @@ export default defineConfig({
     minify: 'esbuild',
     cssMinify: true,
     chunkSizeWarningLimit: 1000,
+    sourcemap: false, // Deshabilitar sourcemaps en producción
+    reportCompressedSize: false, // Mejora el rendimiento de construcción
+    cssCodeSplit: true, // Divide el CSS en chunks
     rollupOptions: {
       output: {
         manualChunks: {

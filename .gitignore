@@ -1,3 +1,23 @@
+# Dependencias
+dist
+dist-ssr
+node_modules
+.pnp
+.pnp.js
+
+# Testing
+coverage
+
+# Producción
+build
+
+# Variables de entorno
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
 # Logs
 logs
 *.log
@@ -5,20 +25,44 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Archivos del sistema
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+*.swo
+*.swp
+
+# Archivos temporales
+*.tmp
+*.temp
+
+# Archivos de caché
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+
+# Análisis de bundle
+bundle-analysis.html
+stats.html
+
+# Docker
+.dockerignore
+.docker/
+
+# Misc
+*.local
